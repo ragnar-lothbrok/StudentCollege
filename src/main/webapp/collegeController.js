@@ -20,7 +20,9 @@ controller("CollegeController", function($scope, collegeService) {
 		};
 
 		$scope.save = function() {
-			alert("lol1");
+			alert(document.getElementById('selectedCollege').value);
+			$scope.student.college.id = document.getElementById('selectedCollege').value;
+			alert($scope.student);
 			$scope.user = angular.copy($scope.master);
 		};
 });

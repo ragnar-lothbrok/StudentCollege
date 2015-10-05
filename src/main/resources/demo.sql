@@ -1,3 +1,7 @@
+create database testDB;
+
+use testDB;
+
 CREATE TABLE `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(20) DEFAULT NULL,

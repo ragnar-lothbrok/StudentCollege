@@ -17,25 +17,25 @@
 			<table>
 				<tr>
 					<th>First Name <font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="firstName" maxlength="20" /></td>
+					<td><input type="text" ng-model="student.firstName" maxlength="20" /></td>
 				</tr>
 				<tr>
 					<th>Last Name<font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="lastName" maxlength="20" /></td>
+					<td><input type="text" ng-model="student.lastName" maxlength="20" /></td>
 				</tr>
 				<tr>
 					<th>About Me<font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="aboutMe" maxlength="200" /></td>
+					<td><input type="text" ng-model="student.aboutMe" maxlength="200" /></td>
 				</tr>
 				<tr>
 					<th>mobileNo<font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="mobileNo" maxlength="10" /></td>
+					<td><input type="text" ng-model="student.mobileNo" maxlength="10" /></td>
 				</tr>
 				<tr>
 					<th>College<font style="color: red;">&nbsp;*</font></th>
 					<td><div>
-							<select>
-								<option ng-repeat="college in colleges.items" value="college.id">{{college.name}}</option>
+							<select id="selectedCollege">
+								<option ng-repeat="college in colleges.items" value="{{college.id}}">{{college.name}}</option>
 							</select>
 						</div></td>
 				</tr>
