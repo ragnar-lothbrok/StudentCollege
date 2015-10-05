@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sample.spring.ibatis.dao.CollegeDAO">
+
+	<resultMap type="sample.spring.ibatis.model.College" id="collegeMap">
+		<result property="id" column="college_id" />
+		<result property="name" column="college_name" />
+	</resultMap>
+
+
+	<select id="getAllColleges" resultType="sample.spring.ibatis.model.College"
+		parameterType="Long">
+		SELECT id as id,name as name FROM college;
+	</select>
+
+	<select id="getStudentByCollegeId" resultType="sample.spring.ibatis.model.College">
+		select s.id as
+		id,s.firstName as firstName,s.lastName,s.aboutMe as aboutMe,c.id as
+		college_id,c.name as college_name from student s inner join college c
+		on c.id=s.id where c.id = #{collegeId}
+	</select>
+	
+	<insert id="saveStudentCollegeMapping">
+		insert into student_college values(#{studentId},#{collegeId});
+	</insert>
+	
+	<delete id="deleteMappingByStudentId" parameterType="Long">
+		delete from student_college where student_id = #{studentId}
+	</delete>
+
+</mapper>

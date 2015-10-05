@@ -1,0 +1,72 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+		http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd"
+	default-lazy-init="false">
+
+	<context:component-scan base-package="sample.spring.ibatis.services" />
+
+	<jaxrs:server id="services" address="/services">
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider">
+				<constructor-arg ref="mapper" />
+			</bean>
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<ref bean="studentResource" />
+			<ref bean="collegeResource"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="xml" value="application/xml" />
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+	</jaxrs:server>
+	
+	<bean id="mapper" class="org.codehaus.jackson.map.ObjectMapper">
+		<property name="serializationInclusion" value="NON_NULL" />
+	</bean>
+
+	<bean id="studentResource" class="sample.spring.ibatis.resource.StudentResource" />
+	<bean id="collegeResource" class="sample.spring.ibatis.resource.CollegeResource" />
+
+	<bean id="studentService" class="sample.spring.ibatis.services.StudentService" />
+	<bean id="collegeService" class="sample.spring.ibatis.services.CollegeService" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="typeAliasesPackage" value="com.cxf.spring.model" /> -->
+	</bean>
+
+	<bean id="studentDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="sample.spring.ibatis.dao.StudentDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="collegeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="sample.spring.ibatis.dao.CollegeDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="5" />
+		<property name="maxActive" value="100" />
+		<property name="maxIdle" value="5" />
+		<property name="maxWait" value="15000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="false" />
+	</bean>
+
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+</beans>

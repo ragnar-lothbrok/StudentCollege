@@ -1,0 +1,58 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sample.spring.ibatis.dao.StudentDAO">
+
+	<resultMap type="sample.spring.ibatis.model.Student" id="studentMap">
+		<result property="id" column="id" />
+		<result property="aboutMe" column="aboutMe" />
+		<result property="firstName" column="first_name" />
+		<result property="lastName" column="last_name" />
+		<result property="mobileNo" column="mobileNo" />
+		<association property="college" javaType="sample.spring.ibatis.model.College" >
+			<result property="id" column="college_id" />
+			<result property="name" column="college_name" />
+		</association>
+	</resultMap>
+
+
+	<select id="getAllStudent" resultMap="studentMap"
+		parameterType="Long">
+		SELECT s.id as id, s.aboutMe as aboutMe,
+		s.firstName as first_name, s.lastName as last_name, s.mobileNo as mobileNo, c.id AS college_id, c.name AS
+		college_name FROM student s LEFT JOIN student_college sc ON
+		sc.student_id = s.id LEFT JOIN college c ON c.id=sc.college_id
+	</select>
+
+	<select id="getStudentById" resultMap="studentMap">
+		SELECT s.id as id, s.aboutMe as aboutMe,
+		s.firstName as first_name, s.lastName as last_name, s.mobileNo as mobileNo, c.id AS college_id, c.name AS
+		college_name FROM student s LEFT JOIN student_college sc ON
+		sc.student_id = s.id LEFT JOIN college c ON c.id=sc.college_id WHERE
+		s.id=#{studentId}
+	</select>
+
+	<insert id="saveStudent" useGeneratedKeys="true" keyProperty="student.id" parameterType="sample.spring.ibatis.model.Student">
+
+		INSERT
+		INTO student (firstName, lastName, mobileNo,aboutMe) VALUES
+		(#{student.firstName},
+		#{student.lastName},
+		#{student.mobileNo},#{student.aboutMe})
+
+	</insert>
+
+	<update id="updateStudent" parameterType="sample.spring.ibatis.model.Student">
+
+		UPDATE student SET
+		firstName = #{firstName}, lastName = #{lastName}, mobileNo =
+		#{mobileNo},aboutMe=#{aboutMe} WHERE id = #{studentId}
+
+	</update>
+
+	<delete id="deleteStudent" parameterType="LONG">
+		DELETE from student
+		WHERE
+		id = #{studentId}
+	</delete>
+</mapper>
