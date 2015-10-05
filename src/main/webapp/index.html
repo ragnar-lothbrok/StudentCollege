@@ -34,8 +34,8 @@
 				<tr>
 					<th>College<font style="color: red;">&nbsp;*</font></th>
 					<td><div>
-							<select ng-model="college.id">
-								<option ng-repeat="college in colleges">{{college.name}}</option>
+							<select>
+								<option ng-repeat="college in colleges.items" value="college.id">{{college.name}}</option>
 							</select>
 						</div></td>
 				</tr>
