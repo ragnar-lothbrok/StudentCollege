@@ -7,6 +7,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
 <script src="collegeService.js"></script>
 <script src="collegeController.js"></script>
+ <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 	<div>
@@ -50,7 +52,7 @@
 					<td colspan="3">{{ student.college.name }}</td>
 				</tr>
 			</table>
-			<div class="pagination pull-right">
+			<div class="pagination pull-left">
 				<table>
 					<tr>
 						<td ng-class="{disabled: currentPage == 0}"><a href

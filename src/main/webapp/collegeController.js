@@ -7,7 +7,7 @@ var app = angular
 
 					$scope.filteredItems = [];
 					$scope.groupedItems = [];
-					$scope.itemsPerPage = 10;
+					$scope.itemsPerPage = 1;
 					$scope.pagedItems = [];
 					$scope.currentPage = 0;
 
@@ -35,10 +35,10 @@ var app = angular
 
 					$scope.save = function(student) {
 						if (student != undefined
-								&& student.firstName.length == 0
-								&& student.lastName.length == 0
-								&& student.mobileNo.length == 0
-								&& student.aboutMe.length == 0) {
+								&& student.firstName.length != 0
+								&& student.lastName.length != 0
+								&& student.mobileNo.length != 0
+								&& student.aboutMe.length != 0) {
 							var studentData = {
 								"id" : 1,
 								"firstName" : student.firstName,
