@@ -1,10 +1,5 @@
-(function() {
-
-	var app = angular.module("myApp", []);
-
-	
-	var CollegeController = function($scope, collegeService) {
-
+var app = angular.module("myApp").
+controller("CollegeController", function($scope, collegeService) {
 		var onFetchError = function(message) {
 			$scope.error = "Error Fetching Users. Message:" + message;
 		};
@@ -28,8 +23,4 @@
 			alert("lol1");
 			$scope.user = angular.copy($scope.master);
 		};
-
-	};
-	
-	app.controller("CollegeController", CollegeController);
-}());
+});
