@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cxf.spring</groupId>
-	<artifactId>SpringCxfRestDemo</artifactId>
+	<artifactId>student-college</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
 
@@ -109,7 +109,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>SpringCxfRestDemo</finalName>
+		<finalName>test</finalName>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
 			<plugin>

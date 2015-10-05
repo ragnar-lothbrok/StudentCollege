@@ -1,5 +1,6 @@
 (function() {
 
+	var app = angular.module("myApp", []);
 
 	
 	var CollegeController = function($scope, collegeService) {
@@ -30,6 +31,5 @@
 
 	};
 	
-	var app = angular.module("myApp", []);
 	app.controller("CollegeController", CollegeController);
 }());
