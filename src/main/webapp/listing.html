@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student College Catalog</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+<script src="collegeService.js"></script>
+<script src="collegeController.js"></script>
+</head>
+<body>
+	<div>
+		<p>
+			<a href="index.html">Click here to add students</a>
+		</p>
+	</div>
+	<div ng-app="myApp" ng-controller="CollegeController"
+		data-ng-init="getData()">
+		<div>
+			<table>
+				<tr>
+					<td align="right">Search By :</td>
+					<td><select ng-model="queryBy">
+							<option value="id">Id</option>
+							<option value="firstName">firstName</option>
+							<option value="lastName">lastName</option>
+							<option value="mobileNo">Mobile No</option>
+					</select></td>&nbsp;&nbsp;
+					<td align="right">Search :</td>
+					<td><input ng-model="query[queryBy]" /></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan="3">Student Id</th>
+					<th colspan="3">FirstName</th>
+					<th colspan="3">Last Name</th>
+					<th colspan="3">About Me</th>
+					<th colspan="3">Mobile Number</th>
+					<th colspan="3">College</th>
+
+				</tr>
+				<tr ng-repeat="student in pagedItems[currentPage] | filter:query">
+					<td colspan="3">{{student.id }}</td>
+					<td colspan="3">{{ student.firstName}}</td>
+					<td colspan="3">{{ student.lastName }}</td>
+					<td colspan="3" style="word-wrap: break-word; width: 150px">{{
+						student.aboutMe }}</td>
+					<td colspan="3">{{ student.mobileNo }}</td>
+					<td colspan="3">{{ student.college.name }}</td>
+				</tr>
+			</table>
+			<div class="pagination pull-right">
+				<table>
+					<tr>
+						<td ng-class="{disabled: currentPage == 0}"><a href
+						ng-click="prevPage()">« Prev</a></td>
+					<td ng-repeat="n in range(pagedItems.length)"
+						ng-class="{active: n == currentPage}" ng-click="setPage()"><a
+						href ng-bind="n + 1">1</a></td>
+					<td ng-class="{disabled: currentPage == pagedItems.length - 1}">
+						<a href ng-click="nextPage()">Next »</a>
+					</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+</body>
+</html>

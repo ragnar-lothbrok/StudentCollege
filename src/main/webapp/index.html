@@ -9,10 +9,11 @@
 <script src="collegeController.js"></script>
 </head>
 <body>
-
-
 	<div ng-app="myApp" ng-controller="CollegeController">
 		<h4>Student Enrollment Form</h4>
+		<div>
+			<font style="color: green;">{{ message }}</font>
+		</div>
 		<form novalidate>
 			<table>
 				<tr>
@@ -51,32 +52,13 @@
 						<button ng-click="reset()" value="Reset">Reset</button></td>
 				</tr>
 			</table>
-			<div>
-				<div>
-					<p>
-						Click <a ng-click="getData()" style="color: red"><u><b>here</b></u></a>
-						to load data.
-					</p>
-				</div>
-				<div>
-					<table>
-						<tr>
-							<th colspan="3">Student Id</th>
-							<th colspan="3">FirstName</th>
-							<th colspan="3">Last Name</th>
-							<th colspan="3">About Me</th>
-							<th colspan="3">Mobile Number</th>
-						</tr>
-						<tr ng-repeat="student in students">
-							<td colspan="3">{{student.id }}</td>
-							<td colspan="3">{{ student.firstName}}</td>
-							<td colspan="3">{{ student.lastName }}</td>
-							<td colspan="3">{{ student.aboutMe }}</td>
-							<td colspan="3">{{ student.mobileNo }}</td>
-						</tr>
-					</table>
-				</div>
-			</div>
+		</form>
+		<div>
+			<p>
+				<a href="listing.html" ng-click="getData()">Click here to see
+					listing page</a>
+			</p>
+		</div>
 	</div>
 </body>
 </html>

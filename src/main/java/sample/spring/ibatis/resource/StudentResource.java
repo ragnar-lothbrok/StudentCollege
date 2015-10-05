@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import sample.spring.ibatis.model.Student;
@@ -33,8 +34,8 @@ public class StudentResource {
 
     @GET
     @Produces({ MediaType.APPLICATION_JSON })
-    public PageSupporter<Student> getAllStudents() {
-        return studentService.getAllStudent();
+    public PageSupporter<Student> getAllStudents(@Param("pageSize")Integer pageSize,@Param("pageNumber")Integer pageNumber) {
+        return studentService.getAllStudent(pageSize,pageNumber);
     }
 
     @POST
