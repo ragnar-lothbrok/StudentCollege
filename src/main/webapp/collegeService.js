@@ -13,4 +13,39 @@ var module = angular.module("myApp", []).
 	return {
 		get : getColleges
 	};
-});
+})
+.factory("getStudentData", function($http) {
+	return {
+		 allData: function(callback) {
+		   $http.get('http://localhost:8081/test/rest/services/student').success(callback);
+		 }
+   }
+}).factory('collegeServicePost', function($http){
+	var saveData = function(studentData) {
+		return $http({
+			method  : 'POST',
+			url     : 'http://localhost:8081/test/rest/services/student',
+			data	: studentData
+       })
+	};
+	
+	return {
+		update : saveData
+	};
+})
+
+
+
+/*.factory("collegeServicePost", function($http) {
+	var saveData = function(studentData) {
+		return $http({
+        method  : 'POST',
+        url     : 'http://localhost:8080/test/rest/services/student',
+        data	: studentData
+       })
+	};
+
+	return {
+		update : saveData
+	};
+});*/
