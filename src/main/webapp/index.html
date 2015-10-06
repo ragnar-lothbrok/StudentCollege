@@ -3,40 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Student College Catalog</title>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.min.js"></script>
+<!-- <script src="app.js"></script> -->
 <script src="collegeService.js"></script>
 <script src="collegeController.js"></script>
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+<link href="common.css" rel="stylesheet">
 </head>
 <body>
+	<div class="sideBar">
+		<ul>
+			<li><a href="listing.html">Table</a></li>
+			<li><a href="index.html" class="active">Form</a></li>
+		</ul>
+	</div>
 	<div ng-app="myApp" ng-controller="CollegeController">
 		<h4>Student Enrollment Form</h4>
 		<div>
 			<font style="color: green;">{{ message }}</font>
 		</div>
-		<form novalidate>
-			<table>
+		<form novalidate class="form-group">
+			<table class="formTable">
 				<tr>
 					<th>First Name <font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="student.firstName"
+					<td><input type="text" class="form-control" ng-model="student.firstName"
 						maxlength="20" /></td>
 				</tr>
 				<tr>
 					<th>Last Name<font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="student.lastName"
+					<td><input type="text" class="form-control" ng-model="student.lastName"
 						maxlength="20" /></td>
 				</tr>
 				<tr>
+					 <th>Gender</th>
+					 <td><input type="radio" name="response" ng-model="student.gender" value="male" ng-checked="true" id="male" /><label for="male">Male</label>&nbsp;&nbsp;
+					 <input type="radio" name="response" ng-model="student.gender" value="female" id="female" /><label for="female">Female</label></td>
+				</tr>
+				<tr>
 					<th>mobileNo<font style="color: red;">&nbsp;*</font></th>
-					<td><input type="text" ng-model="student.mobileNo"
+					<td><input type="text" class="form-control" ng-model="student.mobileNo"
 						maxlength="10" /></td>
 				</tr>
 				<tr>
 					<th>College<font style="color: red;">&nbsp;*</font></th>
 					<td><div>
-							<select id="selectedCollege" ng-model="student.college">
+							<select id="selectedCollege" class="form-control" ng-model="student.college">
 								<option ng-repeat="college in colleges.items"
 									value="{{college.id}}, {{college.name}}">{{college.name}}</option>
 							</select>
@@ -44,28 +57,17 @@
 				</tr>
 				<tr>
 					<th>About Me<font style="color: red;">&nbsp;*</font></th>
-					<td><textarea ng-model="student.aboutMe"
+					<td><textarea class="form-control" ng-model="student.aboutMe"
 							style="height: 72px; width: 231px; overflow: scroll;"
 							maxlength="255"></textarea></td>
 				</tr>
 				<tr>
-					<th>Gender</th>
-					<td><input type="radio" name="response" ng-model="student.gender" value="male" ng-checked="true" />Male&nbsp;&nbsp;
-					<input type="radio" name="response" ng-model="student.gender" value="female" />Female</td>
-				</tr>
-				<tr>
 					<td></td>
-					<td><button ng-click="save(student)" value="Save">Save</button>&nbsp;
-						<button ng-click="reset()" value="Reset">Reset</button></td>
+					<td><button ng-click="save(student)" class="btn btn-primary" value="Save">Save</button>&nbsp;
+						<button ng-click="reset()" class="btn btn-primary" value="Reset">Reset</button></td>
 				</tr>
 			</table>
 		</form>
-		<div>
-			<p>
-				<a href="listing.html" ng-click="getData()">Click here to see
-					listing page</a>
-			</p>
-		</div>
 	</div>
 </body>
 </html>

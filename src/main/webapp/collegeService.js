@@ -4,7 +4,7 @@ var module = angular.module("myApp", []).
 	var getColleges = function(username) {
 		return $http
 				.get(
-						"http://localhost:8081/test/rest/services/college")
+						"/test/rest/services/college")
 				.then(function(response) {
 					return response.data;
 				});
@@ -17,14 +17,14 @@ var module = angular.module("myApp", []).
 .factory("getStudentData", function($http) {
 	return {
 		 allData: function(callback) {
-		   $http.get('http://localhost:8081/test/rest/services/student').success(callback);
+		   $http.get('/test/rest/services/student').success(callback);
 		 }
    }
 }).factory('collegeServicePost', function($http){
 	var saveData = function(studentData) {
 		return $http({
 			method  : 'POST',
-			url     : 'http://localhost:8081/test/rest/services/student',
+			url     : '/test/rest/services/student',
 			data	: studentData
        })
 	};
