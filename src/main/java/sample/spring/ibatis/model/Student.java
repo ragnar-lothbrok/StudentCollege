@@ -8,6 +8,7 @@ public class Student {
     private String aboutMe;
     private College college;
     private String mobileNo;
+    private String gender;
 
     public Integer getId() {
         return id;
@@ -41,10 +42,18 @@ public class Student {
         this.mobileNo = mobileNo;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", aboutMe=" + aboutMe
-                + ", college=" + college + ", mobileNo=" + mobileNo + "]";
+                + ", college=" + college + ", mobileNo=" + mobileNo + ", Gender=" + gender + "]";
     }
 
     public String getAboutMe() {

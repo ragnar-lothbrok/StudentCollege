@@ -9,6 +9,7 @@
 		<result property="firstName" column="first_name" />
 		<result property="lastName" column="last_name" />
 		<result property="mobileNo" column="mobileNo" />
+		<result property="gender" column="gender" />
 		<association property="college" javaType="sample.spring.ibatis.model.College" >
 			<result property="id" column="college_id" />
 			<result property="name" column="college_name" />
@@ -19,14 +20,14 @@
 	<select id="getAllStudent" resultMap="studentMap"
 		parameterType="Long">
 		SELECT s.id as id, s.aboutMe as aboutMe,
-		s.firstName as first_name, s.lastName as last_name, s.mobileNo as mobileNo, c.id AS college_id, c.name AS
+		s.firstName as first_name, s.lastName as last_name, s.mobileNo as mobileNo, s.gender as gender,c.id AS college_id, c.name AS
 		college_name FROM student s LEFT JOIN student_college sc ON
 		sc.student_id = s.id LEFT JOIN college c ON c.id=sc.college_id
 	</select>
 
 	<select id="getStudentById" resultMap="studentMap">
 		SELECT s.id as id, s.aboutMe as aboutMe,
-		s.firstName as first_name, s.lastName as last_name, s.mobileNo as mobileNo, c.id AS college_id, c.name AS
+		s.firstName as first_name, s.lastName as last_name, s.mobileNo as mobileNo,s.gender as gender, c.id AS college_id, c.name AS
 		college_name FROM student s LEFT JOIN student_college sc ON
 		sc.student_id = s.id LEFT JOIN college c ON c.id=sc.college_id WHERE
 		s.id=#{studentId}
@@ -35,10 +36,10 @@
 	<insert id="saveStudent" useGeneratedKeys="true" keyProperty="student.id" parameterType="sample.spring.ibatis.model.Student">
 
 		INSERT
-		INTO student (firstName, lastName, mobileNo,aboutMe) VALUES
+		INTO student (firstName, lastName, mobileNo,aboutMe,gender) VALUES
 		(#{student.firstName},
 		#{student.lastName},
-		#{student.mobileNo},#{student.aboutMe})
+		#{student.mobileNo},#{student.aboutMe},#{student.gender})
 
 	</insert>
 

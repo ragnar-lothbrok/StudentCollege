@@ -16,7 +16,7 @@
 
 	<select id="getStudentByCollegeId" resultType="sample.spring.ibatis.model.College">
 		select s.id as
-		id,s.firstName as firstName,s.lastName,s.aboutMe as aboutMe,c.id as
+		id,s.firstName as firstName,s.lastName,s.aboutMe as aboutMe,s.gender as gender,c.id as
 		college_id,c.name as college_name from student s inner join college c
 		on c.id=s.id where c.id = #{collegeId}
 	</select>

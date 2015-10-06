@@ -7,7 +7,7 @@ var app = angular
 
 					$scope.filteredItems = [];
 					$scope.groupedItems = [];
-					$scope.itemsPerPage = 1;
+					$scope.itemsPerPage = 10;
 					$scope.pagedItems = [];
 					$scope.currentPage = 0;
 
@@ -48,7 +48,8 @@ var app = angular
 									"name" : student.college.split(',')[1]
 								},
 								"mobileNo" : student.mobileNo,
-								"aboutMe" : student.aboutMe
+								"aboutMe" : student.aboutMe,
+								"gender" :student.gender
 							}
 							collegeServicePost.update(studentData);
 							$scope.message = "saved successfully";

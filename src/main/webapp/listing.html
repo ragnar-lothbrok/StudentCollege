@@ -27,6 +27,7 @@
 							<option value="firstName">firstName</option>
 							<option value="lastName">lastName</option>
 							<option value="mobileNo">Mobile No</option>
+							<option value="gender">Gender</option>
 					</select></td>&nbsp;&nbsp;
 					<td align="right">Search :</td>
 					<td><input ng-model="query[queryBy]" /></td>
@@ -37,6 +38,7 @@
 					<th colspan="3">Student Id</th>
 					<th colspan="3">FirstName</th>
 					<th colspan="3">Last Name</th>
+					<th colspan="3">Gender</th>
 					<th colspan="3">About Me</th>
 					<th colspan="3">Mobile Number</th>
 					<th colspan="3">College</th>
@@ -46,6 +48,7 @@
 					<td colspan="3">{{student.id }}</td>
 					<td colspan="3">{{ student.firstName}}</td>
 					<td colspan="3">{{ student.lastName }}</td>
+					<td colspan="3">{{ student.gender }}</td>
 					<td colspan="3" style="word-wrap: break-word; width: 150px">{{
 						student.aboutMe }}</td>
 					<td colspan="3">{{ student.mobileNo }}</td>

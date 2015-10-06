@@ -49,6 +49,11 @@
 							maxlength="255"></textarea></td>
 				</tr>
 				<tr>
+					<th>Gender</th>
+					<td><input type="radio" name="response" ng-model="student.gender" value="male" ng-checked="true" />Male&nbsp;&nbsp;
+					<input type="radio" name="response" ng-model="student.gender" value="female" />Female</td>
+				</tr>
+				<tr>
 					<td></td>
 					<td><button ng-click="save(student)" value="Save">Save</button>&nbsp;
 						<button ng-click="reset()" value="Reset">Reset</button></td>
