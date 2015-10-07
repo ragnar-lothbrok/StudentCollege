@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student College Catalog</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+<script src="collegeService.js"></script>
+<script src="collegeController.js"></script>
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+<link href="common.css" rel="stylesheet">
+</head>
+<body>
+	<div class="sideBar">
+		<ul>
+			<li><a href="listing.html" class="active">Table</a></li>
+			<li><a href="index.html">Form</a></li>
+		</ul>
+	</div>	
+	<div ng-app="myApp" ng-controller="CollegeController"
+		data-ng-init="getData()">
+		<div>
+			<br><br>
+			<table>
+				<tr>
+					<td align="right">Search By: &nbsp; </td>
+					<td><select class="form-control" ng-model="queryBy">
+							<option selected="selected" value="id">Id</option>
+							<option value="firstName">firstName</option>
+							<option value="lastName">lastName</option>
+							<option value="mobileNo">Mobile No</option>
+							<option value="gender">Gender</option>
+					</select>
+					</td>
+					<td style="border-left: 30px solid #FFF;">&nbsp;&nbsp;</td>
+					<td align="right">Search: &nbsp; </td>
+					<td><input class="form-control" ng-model="query[queryBy]" /></td>
+				</tr>
+			</table>
+			<br><br>
+			<table class="table table-striped">
+				<tr>
+					<th colspan="3">Student Id</th>
+					<th colspan="3">FirstName</th>
+					<th colspan="3">Last Name</th>
+					<th colspan="3">About Me</th>
+					<th colspan="3">Gender</th>
+					<th colspan="3">Mobile Number</th>
+					<th colspan="3">College</th>
+
+				</tr>
+				<tr ng-repeat="student in pagedItems[currentPage] | filter:query">
+					<td colspan="3">{{student.id }}</td>
+					<td colspan="3">{{ student.firstName}}</td>
+					<td colspan="3">{{ student.lastName }}</td>
+					<td colspan="3" style="word-wrap: break-word; width: 150px">{{
+						student.aboutMe }}</td>
+						<td colspan="3">{{ student.gender }}</td>
+					<td colspan="3">{{ student.mobileNo }}</td>
+					<td colspan="3">{{ student.college.name }}</td>
+				</tr>
+			</table>
+			<div class="pagination pull-left">
+				<table>
+					<tr>
+					<td style="border-right: 20px solid #FFF;" ng-class="{disabled: currentPage == 0}"><a href
+						ng-click="prevPage()">&laquo; Prev</a></td>
+					
+						
+					<td  style="border: 10px solid #FFF;" ng-repeat="n in range(pagedItems.length)"
+						ng-class="{active: n == currentPage}" ng-click="setPage()"><a
+						href ng-bind="n + 1">1</a></td>
+					<td style="border-left: 20px solid #FFF;" ng-class="{disabled: currentPage == pagedItems.length - 1}">
+						<a href ng-click="nextPage()">Next &raquo;</a>						
+					</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+</body>
+</html>

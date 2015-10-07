@@ -1,0 +1,45 @@
+body {
+    margin-left: 40px;
+    padding-left: 250px;
+}
+.sideBar {
+    background: #337ab7 none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 250px;
+	overflow: hidden;
+}
+.sideBar ul{margin: 0; padding: 0;}
+.sideBar li {
+    color: #fff;
+    list-style: outside none none;
+}
+.sideBar a {
+    background: #236aa7 none repeat scroll 0 0;
+    border-bottom: 1px solid #acacac;
+    color: #fff;
+    display: block;
+    padding: 10px 30px;
+    width: 100%;
+}
+.sideBar a:hover,.sideBar a.active {
+    background: #034a87 none repeat scroll 0 0;    
+	text-decoration: none;
+}
+.formTable tr {
+    border-top: 10px solid #fff;
+}
+.formTable th {
+    padding-right: 20px;
+}
+.formTable label {
+    padding-left: 7px;
+}
+
+.table {
+    border: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+    width: 96%;
+}
