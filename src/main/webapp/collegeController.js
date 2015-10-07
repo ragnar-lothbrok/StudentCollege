@@ -34,6 +34,9 @@ var app = angular
 					};
 
 					$scope.save = function(student) {
+						if(student.gender.length == 0){
+							student.gender ="male";
+						}
 						if (student != undefined
 								&& student.firstName.length != 0
 								&& student.lastName.length != 0
